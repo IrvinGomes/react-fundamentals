@@ -37,7 +37,8 @@
 
 
     const element = (
-      <div className="container">
+      //changing to fragment so that we can have multiple children
+      <>
         {Message({ children: "Hello World1" })}
         {Message({ children: "Goodbye World1" })}
         {/* Extra Credit 1*/}
@@ -52,7 +53,7 @@
         {/* Extra Credit 4*/}
         <NewMessage2 subject="Hello" greeting="World5" />
         <NewMessage2 subject="Goodbye" greeting="World5" />
-      </div>
+      </>
     )
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
