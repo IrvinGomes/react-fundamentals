@@ -9,6 +9,26 @@
   <script type="text/babel">
 
     const Message = ({ children }) => <div className="message">{children}</div>
+    // Extra Credit 3
+    const NewMessage = ({ subject, greetings }) => <div className="message">{subject} {greetings}</div>
+    const PropTypes = {
+      subject: (props, propName, componentName) => {
+        if (typeof props[propName] !== 'string') {
+          return new Error(`${componentName} subject prop should be a string`)
+        }
+      },
+      greetings: (props, propName, componentName) => {
+        if (typeof props[propName] !== 'string') {
+          return new Error(`${componentName} greetings prop should be a string`)
+        }
+      }
+    }
+    NewMessage.propTypes = {
+      subject: PropTypes.subject,
+      greetings: PropTypes.greetings
+    }
+
+
     const element = (
       <div className="container">
         {Message({ children: "Hello World1" })}
@@ -19,6 +39,9 @@
         {/* Extra Credit 2*/}
         <Message children="Hello World3" />
         <Message children="Goodbye World3" />
+        {/* Extra Credit 3*/}
+        <NewMessage subject="Hello" greetings="World4" />
+        <NewMessage subject="Goodbye" greetings="World4" />
       </div>
     )
 
