@@ -8,14 +8,17 @@
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   <script type="text/babel">
 
-    const message = ({ children }) => <div className="message">{children}</div>
+    const Message = ({ children }) => <div className="message">{children}</div>
     const element = (
       <div className="container">
-        {message({ children: "Hello World1" })}
-        {message({ children: "Goodbye World1" })}
+        {Message({ children: "Hello World1" })}
+        {Message({ children: "Goodbye World1" })}
         {/* Extra Credit 1*/}
-        {React.createElement(message, { children: "Hello World2" })}
-        {React.createElement(message, { children: "Goodbye World2" })}
+        {React.createElement(Message, { children: "Hello World2" })}
+        {React.createElement(Message, { children: "Goodbye World2" })}
+        {/* Extra Credit 2*/}
+        <Message children="Hello World3" />
+        <Message children="Goodbye World3" />
       </div>
     )
 
