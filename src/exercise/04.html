@@ -12,13 +12,13 @@
     // Extra Credit 3
     const NewMessage = ({ subject, greeting }) => <div className="message">{subject} {greeting}</div>
     const MyPropTypes = {
-      string: (props, propName, componentName) => {
+      string(props, propName, componentName) {
         if (typeof props[propName] !== 'string') {
           return new Error(`${componentName} subject prop should be a string`)
         }
       }
     }
-    NewMessage.MyPropTypes = {
+    NewMessage.propTypes = {
       subject: MyPropTypes.string,
       greeting: MyPropTypes.string
     }
