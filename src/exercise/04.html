@@ -6,26 +6,33 @@
   <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script type="text/babel">
-
     const Message = ({ children }) => <div className="message">{children}</div>
     // Extra Credit 3
-    const NewMessage = ({ subject, greetings }) => <div className="message">{subject} {greetings}</div>
-    const PropTypes = {
+    const NewMessage = ({ subject, greeting }) => <div className="message">{subject} {greeting}</div>
+    const MyPropTypes = {
       subject: (props, propName, componentName) => {
         if (typeof props[propName] !== 'string') {
           return new Error(`${componentName} subject prop should be a string`)
         }
       },
-      greetings: (props, propName, componentName) => {
+      greeting: (props, propName, componentName) => {
         if (typeof props[propName] !== 'string') {
-          return new Error(`${componentName} greetings prop should be a string`)
+          return new Error(`${componentName} greeting prop should be a string`)
         }
       }
     }
-    NewMessage.propTypes = {
-      subject: PropTypes.subject,
-      greetings: PropTypes.greetings
+    NewMessage.MyPropTypes = {
+      subject: MyPropTypes.subject,
+      greeting: MyPropTypes.greeting
+    }
+
+    // Extra Credit 4
+    const NewMessage2 = ({ subject, greeting }) => <div className="message">{subject} {greeting}</div>
+    NewMessage2.propTypes = {
+      subject: PropTypes.string.isRequired,
+      greeting: PropTypes.string.isRequired,
     }
 
 
@@ -40,8 +47,11 @@
         <Message children="Hello World3" />
         <Message children="Goodbye World3" />
         {/* Extra Credit 3*/}
-        <NewMessage subject="Hello" greetings="World4" />
-        <NewMessage subject="Goodbye" greetings="World4" />
+        <NewMessage subject="Hello" greeting="World4" />
+        <NewMessage subject="Goodbye" greeting="World4" />
+        {/* Extra Credit 4*/}
+        <NewMessage2 subject="Hello" greeting="World5" />
+        <NewMessage2 subject="Goodbye" greeting="World5" />
       </div>
     )
 
